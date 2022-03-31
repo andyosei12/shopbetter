@@ -1,0 +1,60 @@
+import { createContext, useState, useEffect } from "react";
+
+const addCartItem = (cartItems, productToAdd) => {
+  //info: find if cart items contains product to add
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
+  );
+  //info: If found increment quantity
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+  }
+  //info: return new array with modified cartItems/ new cart item
+  return [...cartItems, { ...productToAdd, quantity: 1 }];
+};
+const CartContext = createContext({
+  showCartDropdown: false,
+  handleCartDropdown: () => {},
+  cartItems: [],
+  addItemToCart: () => {},
+  cartCount: 0,
+});
+
+export const CartProvider = ({ children }) => {
+  const [cartDropdown, setCartDropdown] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const newCartCount = cartItems.reduce(
+      (acc, cartItem) => acc + cartItem.quantity,
+      0
+    );
+    setCartCount(newCartCount);
+  }, [cartItems]);
+
+  const addItemToCart = (productToAdd) => {
+    setCartItems(addCartItem(cartItems, productToAdd));
+  };
+  const cartDropdownHandler = () => {
+    setCartDropdown(!cartDropdown);
+  };
+  const defaultValues = {
+    showCartDropdown: cartDropdown,
+    handleCartDropdown: cartDropdownHandler,
+    addItemToCart,
+    cartItems,
+    cartCount,
+  };
+  return (
+    <CartContext.Provider value={defaultValues}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export default CartContext;

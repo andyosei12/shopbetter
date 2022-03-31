@@ -5,16 +5,16 @@ import { UserProvider } from "./contexts/user-context";
 import { ProductProvider } from "./contexts/products.context";
 import "./index.scss";
 import App from "./App";
-import { CartDropdownProvider } from "./contexts/cart-dropdown.context";
+import { CartProvider } from "./contexts/cart.context";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <ProductProvider>
-          <CartDropdownProvider>
+          <CartProvider>
             <App />
-          </CartDropdownProvider>
+          </CartProvider>
         </ProductProvider>
       </UserProvider>
     </BrowserRouter>

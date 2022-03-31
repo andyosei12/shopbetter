@@ -8,12 +8,11 @@ import { UserContext } from "../../contexts/user-context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import "./Navigation.styles.scss";
-import CartDropdownContext from "../../contexts/cart-dropdown.context";
+import CartContext from "../../contexts/cart.context";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { showCartDropdown, handleCartDropdown } =
-    useContext(CartDropdownContext);
+  const { showCartDropdown, handleCartDropdown } = useContext(CartContext);
 
   const cartDropdownHandler = () => {
     handleCartDropdown();
