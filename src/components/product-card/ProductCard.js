@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import CartContext from "../../contexts/cart.context";
-import "./ProductCart.styles.scss";
+import "./ProductCard.styles.scss";
 import Button from "../button/Button";
 
-const ProductCart = ({ product }) => {
+const ProductCard = ({ product }) => {
   const { addItemToCart } = useContext(CartContext);
   const { name, price, imageUrl } = product;
   const addProductToCart = () => addItemToCart(product);
@@ -21,4 +21,4 @@ const ProductCart = ({ product }) => {
   );
 };
 
-export default ProductCart;
+export default ProductCard;
