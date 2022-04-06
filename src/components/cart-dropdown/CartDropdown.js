@@ -7,15 +7,17 @@ import "./CartDropdown.styles.scss";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
-  const { cartItems, handleCartDropdown } = useContext(CartContext);
+  const { cartItems, handleCartDropdown, showCartDropdown } =
+    useContext(CartContext);
   const goToCheckoutHandler = () => {
     navigate("/checkout");
-    handleCartDropdown();
+    handleCartDropdown(!showCartDropdown);
   };
 
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
+        {cartItems.length === 0 && <p>Your cart is empty</p>}
         {cartItems.map((item) => (
           <CartItem key={item.id} cartItem={item} />
         ))}

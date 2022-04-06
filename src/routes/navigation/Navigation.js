@@ -15,7 +15,7 @@ const Navigation = () => {
   const { showCartDropdown, handleCartDropdown } = useContext(CartContext);
 
   const cartDropdownHandler = () => {
-    handleCartDropdown();
+    handleCartDropdown(!showCartDropdown);
   };
 
   return (
