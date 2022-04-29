@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import CartIcon from "../../components/cart-icon/CartIcon";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 
-import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import "./Navigation.styles.scss";
 import { setIsCartOpen } from "../../store/cart/cart.action";
+import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -19,6 +19,8 @@ const Navigation = () => {
   const cartDropdownHandler = () => {
     dispatch(setIsCartOpen(!showCartDropdown));
   };
+
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <>
