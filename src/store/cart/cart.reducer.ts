@@ -3,8 +3,8 @@ import { setIsCartOpen, setCartItems } from "./cart.action";
 import { AnyAction } from "redux";
 
 export type CartState = {
-  showCartDropdown: Boolean;
-  cartItems: CartItem[];
+  readonly showCartDropdown: Boolean;
+  readonly cartItems: CartItem[];
 };
 const CART_INITIAL_STATE: CartState = {
   showCartDropdown: false,
