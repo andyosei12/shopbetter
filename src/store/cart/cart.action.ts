@@ -6,9 +6,13 @@ import {
 import { CART_ACTION_TYPES, CartItem } from "./cart.types";
 import { CategoryItem } from "../categories/category.types";
 
-const addCartItem = (cartItems: CartItem[], productToAdd: CategoryItem) => {
+const addCartItem = (
+  cartItems: CartItem[],
+  productToAdd: CategoryItem
+): CartItem[] => {
   //info: find if cart items contains product to add
-  const existingCartItem = cartItems.find(
+  console.log(cartItems);
+  const existingCartItem = cartItems?.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
   //info: If found increment quantity
