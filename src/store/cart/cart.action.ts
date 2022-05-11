@@ -11,8 +11,7 @@ const addCartItem = (
   productToAdd: CategoryItem
 ): CartItem[] => {
   //info: find if cart items contains product to add
-  console.log(cartItems);
-  const existingCartItem = cartItems?.find(
+  const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
   //info: If found increment quantity
