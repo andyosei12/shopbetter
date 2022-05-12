@@ -3,8 +3,13 @@ import Button from "../button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { CategoryItem } from "../../store/categories/category.types";
 
-const ProductCard = ({ product }) => {
+type ProductProps = {
+  product: CategoryItem;
+};
+
+const ProductCard = ({ product }: ProductProps) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 

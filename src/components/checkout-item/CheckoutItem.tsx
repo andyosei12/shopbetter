@@ -5,9 +5,14 @@ import {
   removeItemFromCart,
 } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { CartItem } from "../../store/cart/cart.types";
 import "./CheckoutItem.styles.scss";
 
-const CheckoutItem = ({ cartItem }) => {
+type CheckoutItemProps = {
+  cartItem: CartItem;
+};
+
+const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
   const { name, imageUrl, price, quantity } = cartItem;

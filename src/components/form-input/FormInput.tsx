@@ -1,14 +1,21 @@
+import { FC, InputHTMLAttributes } from "react";
 import React from "react";
 import "./FormInput.styles.scss";
 
-const FormInput = ({ label, ...otherProps }) => {
+export type FormInputProps = {
+  label: string;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
   return (
     <div className="group">
       <input className="form-input" {...otherProps} />
       {label && (
         <label
           className={`${
-            otherProps.value.length ? "shrink" : ""
+            typeof otherProps.value === "string" && otherProps.value.length
+              ? "shrink"
+              : ""
           } form-input-label`}
         >
           {label}

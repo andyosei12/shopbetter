@@ -4,7 +4,11 @@ import { selectCartCount } from "../../store/cart/cart.selector";
 
 import "./CartIcon.styles.scss";
 
-const CartIcon = ({ onCartIconClick }) => {
+export type CartIconProps = {
+  onCartIconClick: () => void;
+};
+
+const CartIcon = ({ onCartIconClick }: CartIconProps) => {
   const cartCount = useSelector(selectCartCount);
 
   return (

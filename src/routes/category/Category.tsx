@@ -10,14 +10,20 @@ import Spinner from "../../components/spinnrer/Spinner";
 
 import "./Category.styles.scss";
 
+type CategoryRouteParams = {
+  category: string;
+};
+
 const Category = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
-  const { category } = useParams();
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
   const isLoading = useSelector(selectCategoriesIsLoading);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(
-    () => [setProducts(categoriesMap[category])],
+    () => setProducts(categoriesMap[category]),
     [category, categoriesMap]
   );
 
