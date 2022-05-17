@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemToCart,
@@ -12,7 +13,7 @@ type CheckoutItemProps = {
   cartItem: CartItem;
 };
 
-const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CheckoutItemProps) => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
   const { name, imageUrl, price, quantity } = cartItem;
@@ -44,6 +45,6 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutItem;
