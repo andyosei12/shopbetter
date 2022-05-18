@@ -3,6 +3,10 @@
   flex-direction: column;
   width: 400px;
 
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+
   h2 {
     margin: 10px 0;
   }
@@ -11,4 +15,12 @@
 .buttons-container {
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+
+  & > *:first-child {
+    margin-bottom: 10px;
+  }
 }

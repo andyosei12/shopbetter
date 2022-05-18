@@ -16,10 +16,20 @@
       height: 100%;
     }
   }
+
+  .name {
+    @media screen and (max-width: 800px) {
+      font-size: 16px;
+    }
+  }
   .name,
   .quantity,
   .price {
     width: 23%;
+
+    @media screen and (max-width: 800px) {
+      width: 21%;
+    }
   }
 
   .quantity {
