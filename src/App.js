@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import Spinner from "./components/spinnrer/Spinner";
 import { checkUserSession } from "./store/user/user.action";
 
+// import { GlobalStyle } from "./global.styles";
+
 const Home = lazy(() => import("./routes/home/Home"));
 const Authentication = lazy(() =>
   import("./routes/authentication/Authentication")
